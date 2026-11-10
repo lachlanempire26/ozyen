@@ -1,0 +1,20 @@
+// Low-risk "factual only" wording. Used only when built with OZ_FACT=1.
+export const F={
+en:{kNl:"Bank / cash",h1:"Compare what each provider pays out.",sub:"Enter an amount. We show the published fees and margins of each provider against the mid-market rate. Figures are indicative.",
+t1:"Shown side by side",t1d:"Listed alphabetically. Not a recommendation.",t2:"Banks included",t2d:"Alongside transfer services and cards.",t3:"Every figure has a date",t3d:"Provider figures are checked by hand.",
+cmpH:"Provider figures side by side",cmpP:"Listed alphabetically, with the amount each would pay out for the amount you entered. Figures are indicative only. This is general information, not advice.",
+affNote:"We list {n} providers. This is not every provider in the market. Other providers exist and may cost more or less.",
+abP:"OzYen shows factual information about fees and rates. It does not recommend a provider, and does not hold, move or exchange money. OzYen is not a financial services provider.",
+fAff:"OzYen shows factual information only. It does not recommend any provider.",
+nAbout:"About OzYen",abH:"About OzYen",a4:"The mid-market rate is updated daily. Provider figures are checked by hand and carry a verified date.",
+fact_mid:"Mid-market value of your amount (benchmark)",fact_pct:"{p}% of mid-market value",fact_range:"Listed providers pay out between {a} and {b} for this amount (indicative).",
+fact_sweet:"Fixed fees weigh less on larger amounts. Across the listed providers, they matter much less above about {a}."},
+ja:{kNl:"銀行・現金",h1:"各社の受取額を比べる。",sub:"金額を入力すると、各社の公表手数料とマージンをミッドマーケットレートと並べて表示します。数値は目安です。",
+t1:"並べて表示",t1d:"五十音・アルファベット順。おすすめではありません。",t2:"銀行も掲載",t2d:"送金サービスやカードと並べて表示します。",t3:"数値には日付付き",t3d:"各社の数値は手作業で確認しています。",
+cmpH:"各社の数値を並べて表示",cmpP:"アルファベット順に、入力した金額に対する各社の受取額を表示します。数値は目安です。一般的な情報であり、助言ではありません。",
+affNote:"掲載は{n}社です。市場のすべての事業者ではありません。他の事業者は、より高い場合も低い場合もあります。",
+abP:"OzYenは手数料とレートに関する事実情報を表示します。特定の事業者をおすすめせず、資金のお預かり、送金、両替は行いません。OzYenは金融サービス事業者ではありません。",
+fAff:"OzYenは事実情報のみを表示します。特定の事業者はおすすめしません。",
+nAbout:"OzYenについて",abH:"OzYenについて",a4:"ミッドマーケットレートは毎日更新されます。各社の数値は手作業で確認し、確認日を表示しています。",
+fact_mid:"ご入力額のミッドマーケット価値（基準）",fact_pct:"ミッドマーケット価値の{p}%",fact_range:"掲載各社の受取額は、この金額で{a}〜{b}です（目安）。",
+fact_sweet:"固定手数料は金額が大きいほど影響が小さくなります。掲載各社では、約{a}を超えるとさらに小さくなります。"}};

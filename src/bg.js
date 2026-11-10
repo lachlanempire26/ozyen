@@ -1,0 +1,1 @@
+export function mountBg(host){const d=document.createElement('div');d.textContent='WebGL not available';d.style.cssText='position:absolute;inset:0;display:grid;place-items:center;color:#fff;background:#222';host.appendChild(d);return()=>d.remove()}

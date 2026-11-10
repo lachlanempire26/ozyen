@@ -1,0 +1,80 @@
+[
+ {
+  "id": "wise",
+  "name": "Wise",
+  "kind": "tr",
+  "margin": 0.63,
+  "fee": 0,
+  "aff": true,
+  "url": "",
+  "verified": "2026-11-06",
+  "source": "Wise public comparison feed, A$1000 to JPY: Wise fee A$6.34 at mid-market rate (modelled as % of amount).",
+  "site": "https://wise.com/au/",
+  "note": {
+   "en": "Mid-market rate plus a shown fee. Fee varies with amount and how you pay.",
+   "ja": "ミッドマーケットレート+明示された手数料。手数料は金額や支払方法で変わります。"
+  }
+ },
+ {
+  "id": "revolut",
+  "name": "Revolut",
+  "kind": "cd",
+  "margin": 0,
+  "fee": 0,
+  "aff": true,
+  "url": "",
+  "verified": "2026-11-06",
+  "source": "Revolut AU Standard fees page 2026-11-06: A$0 exchange fee in market hours up to Fair Usage Limit; 0.5% over limit; 1% (1.5% over limit) outside market hours (weekends).",
+  "site": "https://www.revolut.com/en-AU/",
+  "note": {
+   "en": "Standard plan, weekdays, within its fair-usage limit. Weekends add 1%; over the limit adds 0.5%.",
+   "ja": "スタンダードプラン・平日・利用上限内の場合。週末は+1%、上限超過は+0.5%。"
+  }
+ },
+ {
+  "id": "ofx",
+  "name": "OFX",
+  "kind": "tr",
+  "margin": 1.73,
+  "fee": 15,
+  "aff": true,
+  "url": "",
+  "verified": "2026-11-06",
+  "source": "Wise public comparison feed, A$1000 to JPY: OFX rate markup 1.73% + A$15 fee.",
+  "site": "https://www.ofx.com/en-au/",
+  "note": {
+   "en": "Rate margin plus a A$15 fee on smaller transfers. Margins can be lower on large amounts.",
+   "ja": "レートの上乗せ+少額送金は15豪ドルの手数料。高額では上乗せが下がる場合があります。"
+  }
+ },
+ {
+  "id": "bank",
+  "name": "bank",
+  "kind": "nl",
+  "margin": 4.05,
+  "fee": 0,
+  "aff": false,
+  "url": "",
+  "verified": "2026-11-06",
+  "source": "Average of NAB 2.52%, ANZ 4.50%, CBA 5.13% (Wise public comparison feed, A$1000 to JPY, bank transfer). Other banks not listed.",
+  "note": {
+   "en": "Average of big-four banks with published online rates. Your bank may differ.",
+   "ja": "オンラインレートを公開している大手銀行の平均。銀行により異なります。"
+  }
+ },
+ {
+  "id": "kiosk",
+  "name": "kiosk",
+  "kind": "nl",
+  "margin": 3.0,
+  "fee": 0,
+  "aff": false,
+  "url": "",
+  "verified": "2026-11-06",
+  "source": "Travelex AU online cash rate 2026-11-06: 106.1859 JPY per A$ vs mid 109.467 (Wise feed) = 3.0%. Online is Travelex best rate; in-store/airport rates are higher.",
+  "note": {
+   "en": "Travelex online-order cash rate. Walk-up airport counters usually pay less.",
+   "ja": "Travelexのオンライン注文レート。空港カウンターは通常これより不利です。"
+  }
+ }
+]

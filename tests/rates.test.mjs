@@ -1,0 +1,18 @@
+import test from 'node:test';import assert from 'node:assert/strict';import http from 'node:http';import fs from 'node:fs';import {spawnSync} from 'node:child_process';import {parse,merge} from '../scripts/update-rates.mjs';
+test('parse v1 range',()=>{assert.deepEqual(parse({rates:{'2026-11-02':{JPY:110.66},'2026-11-03':{JPY:110.55}}}),{'2026-11-02':110.66,'2026-11-03':110.55})});
+test('parse v1 latest',()=>{assert.deepEqual(parse({date:'2026-11-04',rates:{JPY:111.01}}),{'2026-11-04':111.01})});
+test('parse v2 array',()=>{assert.deepEqual(parse([{date:'2026-11-04',base:'AUD',quote:'JPY',rate:111.01},{date:'2026-11-04',quote:'USD',rate:.65}]),{'2026-11-04':111.01})});
+test('parse junk',()=>{assert.deepEqual(parse(null),{});assert.deepEqual(parse({rates:{'2026-11-02':{USD:1}}}),{});assert.deepEqual(parse([{date:'x',quote:'JPY',rate:'abc'}]),{})});
+test('merge adds, keeps sorted, idempotent',()=>{const a=merge({'2026-11-02':110},{'2026-11-03':111,'2026-11-02':110});assert.equal(a.changed,1);assert.deepEqual(Object.keys(a.rates),['2026-11-02','2026-11-03']);assert.equal(merge(a.rates,{'2026-11-03':111}).changed,0)});
+test('merge rejects implausible + big jump',()=>{assert.throws(()=>merge({'2026-11-02':110},{'2026-11-03':0}));assert.throws(()=>merge({'2026-11-02':110},{'2026-11-03':150}),/jump/)});
+function serve(handler){return new Promise(r=>{const s=http.createServer(handler).listen(0,'127.0.0.1',()=>r(s))})}
+function runScript(file,hosts){return new Promise(res=>{import('node:child_process').then(({spawn})=>{const p=spawn('node',['scripts/update-rates.mjs'],{env:{...process.env,RATES_FILE:file,FRANKFURTER_HOSTS:hosts}});let o='';p.stdout.on('data',d=>o+=d);p.stderr.on('data',d=>o+=d);p.on('close',c=>res({code:c,out:o}))})})}
+const seed=f=>fs.writeFileSync(f,JSON.stringify({base:'AUD',quote:'JPY',updated:'2026-11-03',rates:{'2026-11-02':110.66,'2026-11-03':110.55}}));
+test('e2e: v1 up -> merges new day',async()=>{const f='/tmp/r1.json';seed(f);const s=await serve((q,r)=>{r.setHeader('content-type','application/json');r.end(JSON.stringify({rates:{'2026-11-03':{JPY:110.55},'2026-11-04':{JPY:111.01}}}))});
+ const o=await runScript(f,`http://127.0.0.1:${s.address().port}`);s.close();assert.equal(o.code,0,o.out);const j=JSON.parse(fs.readFileSync(f));assert.equal(j.rates['2026-11-04'],111.01);assert.equal(j.updated,'2026-11-04')});
+test('e2e: v1 gone (404) -> falls back to v2 ecb array',async()=>{const f='/tmp/r2.json';seed(f);const s=await serve((q,r)=>{if(q.url.startsWith('/v1/')){r.statusCode=404;return r.end('{}')}r.setHeader('content-type','application/json');r.end(JSON.stringify([{date:'2026-11-04',base:'AUD',quote:'JPY',rate:111.01}]))});
+ const o=await runScript(f,`http://127.0.0.1:${s.address().port}`);s.close();assert.equal(o.code,0,o.out);assert.equal(JSON.parse(fs.readFileSync(f)).rates['2026-11-04'],111.01)});
+test('e2e: all down -> exit 1, file untouched',async()=>{const f='/tmp/r3.json';seed(f);const before=fs.readFileSync(f,'utf8');const s=await serve((q,r)=>{r.statusCode=500;r.end('x')});
+ const o=await runScript(f,`http://127.0.0.1:${s.address().port}`);s.close();assert.equal(o.code,1);assert.equal(fs.readFileSync(f,'utf8'),before)});
+test('e2e: crazy rate -> exit 2, file untouched',async()=>{const f='/tmp/r4.json';seed(f);const before=fs.readFileSync(f,'utf8');const s=await serve((q,r)=>{r.setHeader('content-type','application/json');r.end(JSON.stringify({rates:{'2026-11-04':{JPY:1.11}}}))});
+ const o=await runScript(f,`http://127.0.0.1:${s.address().port}`);s.close();assert.equal(o.code,2,o.out);assert.equal(fs.readFileSync(f,'utf8'),before)});

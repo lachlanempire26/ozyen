@@ -1,0 +1,16 @@
+{
+ "name": "OzYen",
+ "domain": "https://ozyen.com.au",
+ "domainConfirmed": false,
+ "abn": "",
+ "contactEmail": "",
+ "analytics": {
+  "plausibleDomain": ""
+ },
+ "features": {
+  "alerts": false,
+  "adSlots": false
+ },
+ "reviewed": "2026-11-05",
+ "staleDays": 35
+}

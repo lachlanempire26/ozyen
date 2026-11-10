@@ -1,0 +1,78 @@
+<!doctype html><html lang="en-AU" data-root="./"><head><meta charset="utf-8">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./apple-touch-icon.png"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>OzYen · Compare AUD to JPY</title><meta name="description" content="Compare what you really receive when sending Australian dollars to Japanese yen. Comparison only. We never hold your money.">
+<meta name="theme-color" content="#0d1530"><!--CANON--><!--SEO-->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/src/app.css"></head>
+<body>
+<div id="bg" aria-hidden="true"></div><div id="veil" aria-hidden="true"></div>
+<a class="skip" href="#main" data-t="nCompare">Skip</a>
+<header class="top"><div class="wrap bar">
+ <a class="logo" href="#top"><img class="mark" src="./favicon.svg" alt="" width="34" height="34"><span>Oz<b>Yen</b></span></a>
+ <nav class="nav" aria-label="Main"><a href="#compare" data-t="nCompare"></a><a href="#history" data-t="nHist"></a><a href="#how" data-t="nHow"></a><a href="#guides" data-t="nGuides"></a><a href="#about" data-t="nAbout"></a></nav>
+ <div class="lang" role="group" aria-label="Language"><button data-l="en" aria-pressed="true">EN</button><button data-l="ja" aria-pressed="false">日本語</button></div>
+</div><p class="util" data-t="util"></p></header>
+
+<main id="main">
+<section class="hero wrap" id="top">
+ <div class="copy">
+  <p class="eyebrow">AUD ⇄ JPY</p>
+  <h1 data-t="h1"></h1><p class="sub" data-t="sub"></p>
+  <ul class="trust"><li><b data-t="t1"></b><span data-t="t1d"></span></li><li><b data-t="t2"></b><span data-t="t2d"></span></li><li><b data-t="t3"></b><span data-t="t3d"></span></li></ul>
+ </div>
+ <div class="glass calc">
+  <div class="dir" role="tablist"><button id="dAud" role="tab" aria-selected="true">AUD → JPY</button><button id="dJpy" role="tab" aria-selected="false">JPY → AUD</button></div>
+  <label for="amt" id="amtL" data-t="inAud"></label>
+  <div class="amt"><span id="cur">A$</span><input id="amt" size="6" inputmode="decimal" autocomplete="off" value="1,000" aria-describedby="midOut"></div>
+  <div class="chips" id="chips"></div>
+  <p class="mid"><span id="midLbl"></span> <b id="midOut"></b></p>
+  <div class="best" id="best"></div><p class="save" id="save"></p><p class="sweet" id="sweet" aria-live="polite"></p>
+  <div class="rate"><span data-t="todayRate"></span><b id="rateNow"></b><span id="rateChg"></span><small id="rateDate"></small></div>
+  <p class="fresh" id="fresh" role="status"></p>
+ </div>
+</section>
+
+<section class="wrap sec" id="compare"><div class="glass">
+ <div class="hd"><div><h2 data-t="cmpH"></h2><p data-t="cmpP"></p></div><p class="stamp" id="stamp"></p></div>
+ <div class="flt" role="group" id="flt"><button data-f="all" data-t="fltAll" aria-pressed="true"></button><button data-f="tr" data-t="fltTr" aria-pressed="false"></button><button data-f="cd" data-t="fltCd" aria-pressed="false"></button><button data-f="nl" data-t="fltNl" aria-pressed="false"></button></div>
+ <ol class="list" id="list"></ol>
+ <p class="note" data-t="affNote"></p><p class="note warn" id="phNote"></p>
+</div></section>
+
+<section class="wrap sec" id="history"><div class="glass">
+ <div class="hd"><div><h2 data-t="chH"></h2><p data-t="chP"></p></div><div class="rng" role="group"><button data-r="30" data-t="d30" aria-pressed="false"></button><button data-r="90" data-t="d90" aria-pressed="true"></button><button data-r="999" data-t="dAll" aria-pressed="false"></button></div></div>
+ <div class="chart" id="chart"><svg id="svg" role="img" aria-label="AUD/JPY rate chart"></svg><div class="tip" id="tip"></div></div>
+ <p class="ctx" id="ctx"></p>
+ <div class="stats" id="stats"></div>
+ <div class="moves" id="moves" aria-live="polite"></div>
+ <p class="note" data-t="src"></p>
+</div></section>
+
+<section class="wrap sec grid2">
+ <div class="glass" id="how"><h2 data-t="howH"></h2><ol class="steps"><li><b data-t="s1h"></b><p data-t="s1p"></p></li><li><b data-t="s2h"></b><p data-t="s2p"></p></li><li><b data-t="s3h"></b><p data-t="s3p"></p></li></ol></div>
+ <div class="glass"><h2 data-t="qcH"></h2><table class="qc" id="qc"></table><p class="note" id="qcN"></p></div>
+</section>
+
+<section class="wrap sec grid2">
+ <div class="glass"><h2 data-t="trH"></h2><p data-t="trP"></p>
+  <div class="row2"><label><span data-t="trD"></span><input id="trD" inputmode="numeric" value="15,000"></label><label><span data-t="trN"></span><input id="trN" inputmode="numeric" value="10"></label></div>
+  <p class="big" id="trOut"></p><p class="note" id="trSub"></p></div>
+ <!--ALERTS--><div class="glass"><h2 data-t="alH"></h2><p data-t="alP"></p>
+  <form id="alF" class="row2"><label><span data-t="alT"></span><input id="alT" inputmode="decimal" required></label><label><span data-t="alE"></span><input id="alE" type="email" required autocomplete="email"></label><button class="cta" data-t="alB"></button></form><p class="note ok" id="alOk" role="status"></p></div>
+<!--/ALERTS--></section>
+
+<section class="wrap sec" id="guides"><div class="glass"><h2 data-t="gH"></h2><p data-t="gP"></p><div class="guides" id="gl"></div></div></section>
+
+<section class="wrap sec grid2">
+ <div class="glass"><h2 data-t="faqH"></h2><div id="faq"></div></div>
+ <div class="glass" id="about"><h2 data-t="abH"></h2><p data-t="abP"></p><h2 id="privacy" data-t="pvH"></h2><p data-t="pvP"></p></div>
+</section>
+</main>
+
+<footer class="wrap foot"><div class="glass">
+ <p><b data-t="fGen"></b> <span data-t="fGen2"></span></p><p data-t="fAff"></p><p data-t="noHold"></p><p id="fProto"></p><p class="cr"><a href="privacy/" data-t="lPriv"></a> · <a href="terms/" data-t="lTerms"></a> · © 2026 OzYen<span id="abn"></span></p>
+</div></footer>
+
+<div class="sticky" id="sticky"><div><small data-t="stTop"></small><b id="stB"></b></div><a href="#top" class="cta" data-t="stEdit"></a></div>
+<script type="module" src="/src/app.js"></script></body></html>

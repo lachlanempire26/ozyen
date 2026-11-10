@@ -1,0 +1,58 @@
+[
+ {
+  "id": "wise",
+  "name": "Wise",
+  "kind": "tr",
+  "margin": 0.6,
+  "fee": 3,
+  "aff": true,
+  "url": "",
+  "site": "https://wise.com/au/",
+  "verified": null,
+  "source": ""
+ },
+ {
+  "id": "revolut",
+  "name": "Revolut",
+  "kind": "cd",
+  "margin": 0.8,
+  "fee": 0,
+  "aff": true,
+  "url": "",
+  "verified": null,
+  "source": ""
+ },
+ {
+  "id": "ofx",
+  "name": "OFX",
+  "kind": "tr",
+  "margin": 0.45,
+  "fee": 10,
+  "aff": true,
+  "url": "",
+  "verified": null,
+  "source": ""
+ },
+ {
+  "id": "bank",
+  "name": "bank",
+  "kind": "nl",
+  "margin": 3.5,
+  "fee": 15,
+  "aff": false,
+  "url": "",
+  "verified": null,
+  "source": ""
+ },
+ {
+  "id": "kiosk",
+  "name": "kiosk",
+  "kind": "nl",
+  "margin": 8,
+  "fee": 0,
+  "aff": false,
+  "url": "",
+  "verified": null,
+  "source": ""
+ }
+]

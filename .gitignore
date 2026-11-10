@@ -1,0 +1,4 @@
+node_modules
+dist*
+src/scenes.orig.js
+src/scenes.v2.js

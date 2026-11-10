@@ -1,0 +1,20 @@
+name: Monthly provider re-check
+on:
+  schedule:
+    - cron: '0 22 1 * *'   # 1st of each month, 08:00 Brisbane
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - id: c
+        run: node scripts/check-providers.mjs && echo "stale=no" >> "$GITHUB_OUTPUT" || echo "stale=yes" >> "$GITHUB_OUTPUT"
+      - if: steps.c.outputs.stale == 'yes'
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: gh issue create --title "Re-check provider fees ($(date +%Y-%m))" --body-file provider-report.md
