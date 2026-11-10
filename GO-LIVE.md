@@ -1,5 +1,6 @@
 # OzYen go-live (about 30 min)
 
+0. Site is live at https://lachlanempire26.github.io/ozyen. When you own the domain, set `domain` back to `https://ozyen.com.au` in config/site.json.
 1. **Domain** - buy ozyen.com.au (needs your ABN; ~A$20/yr, e.g. VentraIP, Crazy Domains). Keep DNS panel open.
 2. **GitHub** - create free account, new repo `ozyen`, upload this folder (unzip, then drag all files incl. `.github`). Branch must be `main`.
 3. **Edit `config/site.json`** in GitHub: set `abn`, `contactEmail`, `domainConfirmed:true`.
